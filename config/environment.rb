@@ -15,6 +15,12 @@ Dir[File.join(File.dirname(__FILE__), "../lib/support", "*.rb")].each {|f| requi
 DBRegistry[ENV["ACTIVE_RECORD_ENV"]].connect!
 DB = ActiveRecord::Base.connection
 
+# ActiveRecord::Base.establish_connection( #clearly needed here
+#   :adapter => "sqlite3",
+#   :database => "db/students.sqlite"
+# )
+
 if ENV["ACTIVE_RECORD_ENV"] == "test"
+
   ActiveRecord::Migration.verbose = false
 end
